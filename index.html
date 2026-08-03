@@ -1,0 +1,618 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туркина Оксана — Портфолио</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #F5F7FA;
+            color: #1A1A1A;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+        }
+        
+        .hero .subtitle {
+            font-size: 22px;
+            font-weight: 400;
+            color: #5A5A5A;
+            margin-bottom: 12px;
+        }
+        
+        .hero .tagline {
+            font-size: 18px;
+            color: #5A5A5A;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background: #00C8FF;
+            margin: 20px auto 30px;
+            border-radius: 2px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #E8F4FD;
+            color: #0090C0;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .contact-mini {
+            font-size: 14px;
+            color: #5A5A5A;
+            margin-top: 10px;
+        }
+        
+        .contact-mini a {
+            color: #00C8FF;
+            text-decoration: none;
+        }
+        
+        .contact-mini a:hover {
+            text-decoration: underline;
+        }
+        
+        /* SECTION */
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin: 50px 0 8px;
+        }
+        
+        .section-sub {
+            font-size: 16px;
+            color: #5A5A5A;
+            margin-bottom: 24px;
+        }
+        
+        /* CARDS GRID */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+        }
+        
+        .card {
+            background: #FFFFFF;
+            padding: 28px 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            text-align: center;
+        }
+        
+        .card .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+        
+        .card p {
+            font-size: 14px;
+            color: #5A5A5A;
+            margin-top: 4px;
+        }
+        
+        /* CASE */
+        .case {
+            background: #FFFFFF;
+            padding: 28px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            margin-bottom: 20px;
+            border-left: 4px solid #00C8FF;
+        }
+        
+        .case h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+        
+        .case .tags {
+            margin: 6px 0 10px;
+        }
+        
+        .case .tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+            color: #5A5A5A;
+            background: #F0F2F5;
+            padding: 2px 12px;
+            border-radius: 12px;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        
+        .case .label {
+            font-weight: 600;
+            color: #1A1A1A;
+            margin-top: 10px;
+        }
+        
+        .case ul {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0 0;
+        }
+        
+        .case ul li {
+            font-size: 14px;
+            color: #333;
+            padding: 3px 0 3px 18px;
+            position: relative;
+        }
+        
+        .case ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00C8FF;
+            font-weight: 600;
+        }
+        
+        /* SKILLS */
+        .skill-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #F0F2F5;
+            font-size: 15px;
+        }
+        
+        .skill-row:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .skill-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #E0E4EA;
+        }
+        
+        .skill-dots .dot.filled {
+            background: #1A1A1A;
+        }
+        
+        .skill-desc {
+            font-size: 13px;
+            color: #8A8A8A;
+        }
+        
+        /* ABOUT */
+        .about-text {
+            background: #FFFFFF;
+            padding: 28px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            font-size: 16px;
+            color: #1A1A1A;
+            line-height: 1.8;
+        }
+        
+        .about-text strong {
+            color: #1A1A1A;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: #1A1A1A;
+            color: #FFFFFF;
+            padding: 50px 40px;
+            margin-top: 60px;
+            text-align: center;
+            border-radius: 0;
+        }
+        
+        .footer h2 {
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .footer a {
+            color: #00C8FF;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer .btn {
+            display: inline-block;
+            background: #00C8FF;
+            color: #FFFFFF;
+            padding: 12px 36px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 16px 0 12px;
+            transition: background 0.2s;
+        }
+        
+        .footer .btn:hover {
+            background: #0090C0;
+            text-decoration: none;
+        }
+        
+        .footer .small {
+            font-size: 13px;
+            color: #8A8A8A;
+            margin-top: 12px;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 30px 20px;
+            }
+            .case {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HERO ===== -->
+        <div class="hero">
+            <span class="status-badge">📍 Ярославль · B2 English · Открыта к стажировке</span>
+            <h1>ТУРКИНА ОКСАНА</h1>
+            <p class="subtitle">Куратор / Координатор образовательных программ</p>
+            <p class="tagline">"Проектирую обучение, которое работает. 15 лет в управлении, последние 2 — в EdTech."</p>
+            <div class="accent-line"></div>
+            <div class="contact-mini">
+                📧 <a href="mailto:ovturkina@gmail.com">ovturkina@gmail.com</a> &nbsp;·&nbsp;
+                📱 +7 960 544-41-41 &nbsp;·&nbsp;
+                💬 <a href="https://t.me/DarthOx">@DarthOx</a>
+            </div>
+        </div>
+
+        <!-- ===== ОБО МНЕ ===== -->
+        <div class="section-title">Обо мне</div>
+        <div class="about-text">
+            <p>Я — педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата.</p>
+            <p style="margin-top:12px;">После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE.</p>
+            <p style="margin-top:12px;"><strong>Моя цель</strong> — позиция куратора или координатора образовательных программ. Мне важно получить практический опыт сопровождения студентов, чтобы лучше понимать их потребности и помогать им проходить обучение без барьеров.</p>
+            <p style="margin-top:12px; color:#5A5A5A; font-size:14px;">🎯 Рассматриваю оплачиваемые стажировки с возможностью обучения и перехода в штат.</p>
+        </div>
+
+        <!-- ===== ФОРМУЛА ===== -->
+        <div class="section-title">Моя формула</div>
+        <p class="section-sub">Педагогика + Системный менеджмент + Методология = образовательные программы, которые работают.</p>
+
+        <div class="grid-3">
+            <div class="card">
+                <div class="icon">🎓</div>
+                <h3>15 лет</h3>
+                <p>управления проектами и координации команд</p>
+            </div>
+            <div class="card">
+                <div class="icon">🧑‍🏫</div>
+                <h3>200+</h3>
+                <p>обученных сотрудников продаж и проектного управления</p>
+            </div>
+            <div class="card">
+                <div class="icon">📐</div>
+                <h3>Методолог ADDIE</h3>
+                <p>спроектировала курс с нуля по модели ADDIE</p>
+            </div>
+        </div>
+
+        <!-- ===== ОПЫТ РАБОТЫ ===== -->
+        <div class="section-title">Опыт работы</div>
+
+        <div style="background:#FFFFFF; padding:28px 30px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04); margin-bottom:20px;">
+            <h3 style="font-size:18px; font-weight:600; color:#1A1A1A;">ПАО «ВымпелКом» (Билайн), Ярославль</h3>
+            <p style="color:#5A5A5A; font-size:14px;">Менеджер проектов · январь 2010 – октябрь 2025</p>
+            <p style="margin-top:8px; font-size:14px; color:#5A5A5A;">Подчинение: директор по продажам / руководитель направления проектного управления</p>
+            <p style="margin-top:8px; font-size:14px;">Зона ответственности: проекты внедрения телеком-решений для корпоративных клиентов, проведение обучений для сотрудников продаж, поддержки и проектного управления.</p>
+            
+            <div class="label" style="margin-top:16px;">Обязанности:</div>
+            <ul style="list-style:none; padding:0; margin:4px 0 0 0;">
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Выявление потребностей клиентов и анализ бизнес-задач</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Подготовка и проработка коммерческих предложений</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Управление проектами: планирование, контроль сроков и бюджета, координация 7 отделов</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Консультирование клиентов и менеджеров по продуктам</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Разработка и проведение обучающих программ</li>
+            </ul>
+
+            <div class="label" style="margin-top:16px;">Достижения:</div>
+            <ul style="list-style:none; padding:0; margin:4px 0 0 0;">
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Реализовала комплексное решение для IT-компании: ЦОД с резервированием — благодарность от компании</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Благодарность Департамента информатизации Ярославской области за решение для фарм-предприятия в пандемию</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Разработала и провела обучение для продаж — живые отзывы, масштабирование на регион</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ По инициативе разработала обучение для менеджеров проектов</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Отмечена за вовлечённость в наиболее доходные проекты для крупного бизнеса</li>
+            </ul>
+        </div>
+
+        <!-- ===== SKILLBOX ===== -->
+        <div style="background:#FFFFFF; padding:28px 30px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04); margin-bottom:20px;">
+            <h3 style="font-size:18px; font-weight:600; color:#1A1A1A;">Skillbox — Методист образовательных программ</h3>
+            <p style="color:#5A5A5A; font-size:14px;">ноябрь 2025 – июнь 2026 · Проектная деятельность</p>
+            <ul style="list-style:none; padding:0; margin:8px 0 0 0;">
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Спроектировала программу по модели ADDIE</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Сформулировала цели по таксономии Блума</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Спроектировала трек по модели SSDL</li>
+                <li style="font-size:14px; color:#333; padding:3px 0 3px 18px; position:relative;">→ Разработала систему оценки и мотивационные механики</li>
+            </ul>
+            <div style="margin-top:12px; font-size:14px; color:#5A5A5A;">
+                <strong>Проект в портфолио:</strong> асинхронный курс «Эмоциональный интеллект» для сервиса «Юнг»
+            </div>
+        </div>
+
+        <!-- ===== КЕЙСЫ ===== -->
+        <div class="section-title">Ключевые проекты</div>
+        <p class="section-sub">5 кейсов, которые показывают мой подход</p>
+
+        <div class="case">
+            <h3>Обучение продаж и проектного управления</h3>
+            <div class="tags">
+                <span class="tag">#ОбучениеВзрослых</span>
+                <span class="tag">#РаботаСВозражениями</span>
+            </div>
+            <div class="label">Проблема:</div>
+            <p style="font-size:14px; color:#5A5A5A;">Менеджеры теряли клиентов из-за непонимания технических продуктов.</p>
+            <div class="label">Решение:</div>
+            <ul>
+                <li>Проанализировала 20 типовых возражений</li>
+                <li>Упаковала в сценарии с бизнес-кейсами</li>
+                <li>Провела пилотный тренинг</li>
+            </ul>
+            <div class="label">Результат:</div>
+            <ul>
+                <li>Тренинг масштабирован на Западный регион</li>
+                <li>Получены живые отзывы и запрос на повтор</li>
+                <li>Благодарность от руководства</li>
+            </ul>
+        </div>
+
+        <div class="case">
+            <h3>Телеком-решение для фарм-предприятия (пандемия)</h3>
+            <div class="tags">
+                <span class="tag">#Госсектор</span>
+                <span class="tag">#КризисноеУправление</span>
+            </div>
+            <div class="label">Проблема:</div>
+            <p style="font-size:14px; color:#5A5A5A;">За 2 недели организовать связь с резервированием (норма — 2 месяца).</p>
+            <div class="label">Решение:</div>
+            <ul>
+                <li>Собрала кросс-функциональную команду</li>
+                <li>Пересобрала логистику поставки оборудования</li>
+                <li>Лично сопровождала запуск</li>
+            </ul>
+            <div class="label">Результат:</div>
+            <ul>
+                <li>Безаварийный запуск в срок</li>
+                <li>Благодарность от Департамента информатизации</li>
+                <li>Решение признано образцовым</li>
+            </ul>
+        </div>
+
+        <div class="case">
+            <h3>Асинхронный курс «Эмоциональный интеллект»</h3>
+            <div class="tags">
+                <span class="tag">#ADDIE</span>
+                <span class="tag">#ТаксономияБлума</span>
+                <span class="tag">#SSDL</span>
+            </div>
+            <div class="label">Решение (по модели ADDIE):</div>
+            <ul>
+                <li><strong>Analysis:</strong> Изучила ЦА и их потребности</li>
+                <li><strong>Design:</strong> Сформулировала цели по таксономии Блума</li>
+                <li><strong>Development:</strong> Разработала структуру по SSDL</li>
+                <li><strong>Implementation:</strong> Создала методические материалы</li>
+                <li><strong>Evaluation:</strong> Спланировала метрики качества</li>
+            </ul>
+            <div class="label">Результат:</div>
+            <ul>
+                <li>Готовая методическая карта</li>
+                <li>Мотивационные механики для удержания студентов</li>
+            </ul>
+        </div>
+
+        <div class="case">
+            <h3>Размещение оборудования в ЦОД с резервированием</h3>
+            <div class="tags">
+                <span class="tag">#УправлениеПроектами</span>
+                <span class="tag">#КрупныйБизнес</span>
+            </div>
+            <div class="label">Решение:</div>
+            <ul>
+                <li>Спроектировала решение с резервированием каналов</li>
+                <li>Координировала 7 отделов (монтаж, закупка, логистика)</li>
+                <li>Обучила локальных специалистов клиента</li>
+            </ul>
+            <div class="label">Результат:</div>
+            <ul>
+                <li>Система работает без сбоев</li>
+                <li>Повторные обращения клиента</li>
+                <li>Благодарность от генерального директора</li>
+            </ul>
+        </div>
+
+        <div class="case">
+            <h3>Обучение менеджеров проектов (собственная разработка)</h3>
+            <div class="tags">
+                <span class="tag">#Обучение</span>
+                <span class="tag">#Инициатива</span>
+            </div>
+            <div class="label">Решение:</div>
+            <ul>
+                <li>Разработала программу обучения по собственной инициативе</li>
+                <li>Адаптировала под реальные бизнес-процессы компании</li>
+                <li>Провела серию тренингов</li>
+            </ul>
+            <div class="label">Результат:</div>
+            <ul>
+                <li>Положительная обратная связь</li>
+                <li>Отмечено руководством за инициативу</li>
+            </ul>
+        </div>
+
+        <!-- ===== НАВЫКИ ===== -->
+        <div class="section-title">Компетенции</div>
+        <div style="background:#FFFFFF; padding:24px 28px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+            <div class="skill-row">
+                <span>Управление проектами и командами</span>
+                <span class="skill-dots">
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                </span>
+                <span class="skill-desc">PMI, 15 лет</span>
+            </div>
+            <div class="skill-row">
+                <span>Обучение взрослых</span>
+                <span class="skill-dots">
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot"></span>
+                </span>
+                <span class="skill-desc">Продажи, сервис, PM</span>
+            </div>
+            <div class="skill-row">
+                <span>Работа с возражениями</span>
+                <span class="skill-dots">
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                </span>
+                <span class="skill-desc">Претензии, переговоры</span>
+            </div>
+            <div class="skill-row">
+                <span>Педагогический дизайн</span>
+                <span class="skill-dots">
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot"></span>
+                </span>
+                <span class="skill-desc">ADDIE, Блум, SSDL</span>
+            </div>
+            <div class="skill-row">
+                <span>CRM и нейросети</span>
+                <span class="skill-dots">
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot"></span>
+                </span>
+                <span class="skill-desc">Amdocs · Perplexity · DeepSeek · Gemini</span>
+            </div>
+            <div class="skill-row">
+                <span>Английский язык</span>
+                <span class="skill-dots">
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot filled"></span>
+                    <span class="dot"></span>
+                </span>
+                <span class="skill-desc">B2 (Upper-Intermediate)</span>
+            </div>
+        </div>
+
+        <!-- ===== ОБРАЗОВАНИЕ ===== -->
+        <div class="section-title">Образование</div>
+        <div style="background:#FFFFFF; padding:20px 28px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+            <p><strong>Ярославский государственный педагогический университет им. К.Д. Ушинского</strong></p>
+            <p style="color:#5A5A5A; font-size:14px;">Учитель биологии и химии · сентябрь 2001 – июнь 2006</p>
+        </div>
+
+        <!-- ===== КУРСЫ ===== -->
+        <div class="section-title">Курсы и тренинги</div>
+        <div style="background:#FFFFFF; padding:20px 28px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:6px 0; border-bottom:1px solid #F0F2F5; font-size:14px;"><strong>РАЙЗ</strong> — Метрики эффективности обучения (январь 2026)</li>
+                <li style="padding:6px 0; border-bottom:1px solid #F0F2F5; font-size:14px;"><strong>Skillbox</strong> — Методист образовательных программ (ноябрь 2025 – июнь 2026)</li>
+                <li style="padding:6px 0; border-bottom:1px solid #F0F2F5; font-size:14px;"><strong>Иван Селиховкин</strong> — Scrum и Kanban (ноябрь 2025)</li>
+                <li style="padding:6px 0; font-size:14px;"><strong>Билайн Университет</strong> — Эмоциональный интеллект (январь 2024)</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- ===== ФУТЕР ===== -->
+    <div class="footer">
+        <h2>ТУРКИНА ОКСАНА</h2>
+        <p>
+            <a href="mailto:ovturkina@gmail.com">ovturkina@gmail.com</a> &nbsp;·&nbsp;
+            +7 960 544-41-41 &nbsp;·&nbsp;
+            <a href="https://t.me/DarthOx">@DarthOx</a>
+        </p>
+        <a href="#" class="btn">НАПИСАТЬ В TELEGRAM</a>
+        <p style="font-size:14px; margin-top:4px;">📍 Ярославль · Открыта к оплачиваемым стажировкам с переходом в штат</p>
+        <div class="small">© 2026 · Все права защищены</div>
+    </div>
+
+</body>
+</html>
