@@ -10,13 +10,12 @@
     <title>Оксана Туркина</title>
     <style>
         :root {
-            --text: #1A1A1A;
-            --muted: #7A7A7A;
-            --line: #E0E0E0;
+            --bg: #FFFFFF;
+            --text: #111111;
+            --muted: #666666;
+            --line: #DDDDDD;
             --accent: #00C2FF;
-            --accent-soft: #E6F7FD;
-            --light: #FEFDFB;
-            --card: rgba(255,255,255,0.85);
+            --tag-bg: #F5F5F5;
         }
 
         *, *::before, *::after {
@@ -30,211 +29,140 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Courier New', 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            font-size: 16px;
-            background-color: #FDFAF5;
-            background-image:
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(170,170,170,0.03) 2px,
-                    rgba(170,170,170,0.03) 4px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(170,170,170,0.02) 1px,
-                    rgba(170,170,170,0.02) 2px
-                ),
-                radial-gradient(ellipse at 20% 30%, rgba(180,200,210,0.05) 0%, transparent 60%),
-                radial-gradient(ellipse at 75% 60%, rgba(160,190,205,0.04) 0%, transparent 55%),
-                radial-gradient(ellipse at 50% 85%, rgba(200,210,220,0.03) 0%, transparent 50%);
+            font-size: 14px;
         }
 
-        .layout {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            min-height: 100vh;
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        @media (max-width: 700px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .sidebar {
-            padding: 40px 28px;
-            border-right: 1px solid var(--line);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            background: rgba(253,250,245,0.7);
-            backdrop-filter: blur(4px);
-        }
-
-        @media (max-width: 700px) {
-            .sidebar {
-                position: static;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--line);
-                padding: 28px 20px;
-                background: transparent;
-            }
-        }
-
-        .sidebar-top h1 {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            margin-bottom: 4px;
-        }
-
-        .sidebar-top .role {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-size: 11px;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+        /* Шапка */
+        header {
+            padding: 40px 0 28px;
+            border-bottom: 2px solid var(--text);
             margin-bottom: 32px;
         }
 
-        .sidebar-nav a {
-            display: block;
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-size: 13px;
-            color: var(--text);
-            text-decoration: none;
-            margin-bottom: 10px;
-            font-weight: 500;
-            transition: color 0.15s;
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .sidebar-nav a:hover {
+        .logo {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .logo .cursor {
             color: var(--accent);
+            animation: blink 1s step-end infinite;
         }
 
-        .sidebar-bottom {
-            font-size: 13px;
-            color: var(--muted);
-            font-style: italic;
-            line-height: 1.4;
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
-        .sidebar-bottom a {
-            color: var(--accent);
-            text-decoration: none;
-            font-style: normal;
-            font-weight: 600;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
-            margin-top: 6px;
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        .header-right {
             font-size: 12px;
+            color: var(--muted);
         }
 
-        .sidebar-bottom a:hover {
+        .header-right a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header-right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Теги */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 36px;
+        }
+
+        .tags a {
+            font-size: 12px;
             color: var(--text);
-            border-color: var(--text);
+            text-decoration: none;
+            background: var(--tag-bg);
+            padding: 4px 10px;
+            transition: all 0.15s;
         }
 
-        .main {
-            padding: 40px 48px;
-            max-width: 680px;
+        .tags a:hover {
+            background: var(--text);
+            color: var(--bg);
         }
 
-        @media (max-width: 700px) {
-            .main {
-                padding: 28px 20px;
-                max-width: 100%;
-            }
-        }
-
+        /* Hero */
         .hero {
-            margin-bottom: 44px;
+            margin-bottom: 40px;
         }
 
         .hero .greeting {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-size: 38px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .hero .belief {
-            font-size: 18px;
-            color: var(--text);
-            line-height: 1.5;
-            margin-bottom: 10px;
-            font-style: italic;
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 6px;
         }
 
         .hero .intro {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--muted);
-            line-height: 1.7;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
-        /* Нежный градиент */
-        .soft-gradient {
-            width: 100%;
-            max-width: 420px;
-            height: 180px;
-            border-radius: 2px;
-            display: block;
-            margin: 0 0 8px;
-            background:
-                radial-gradient(ellipse at 25% 35%, #D4EAF5 0%, transparent 55%),
-                radial-gradient(ellipse at 65% 50%, #C8E6F8 0%, transparent 50%),
-                radial-gradient(ellipse at 45% 70%, #E0F0FA 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 25%, #B8DCF0 0%, transparent 40%),
-                #F5F9FC;
-        }
-
-        .soft-gradient-caption {
+        /* ASCII-разделитель */
+        .ascii-divider {
+            color: var(--line);
             font-size: 11px;
-            color: var(--muted);
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
+            margin-bottom: 32px;
+            user-select: none;
         }
 
-        .section-divider {
-            border: none;
-            border-top: 1px solid var(--line);
-            margin: 0 0 36px;
-            width: 100%;
-        }
-
+        /* Секции */
         .section {
-            margin-bottom: 44px;
+            margin-bottom: 40px;
         }
 
         .section h2 {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 18px;
+            letter-spacing: 0.06em;
+            color: var(--text);
+            margin-bottom: 16px;
         }
 
+        .section h2::before {
+            content: "# ";
+            color: var(--accent);
+        }
+
+        /* Кейс */
         .case-item {
-            margin-bottom: 24px;
-            padding-bottom: 24px;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
             border-bottom: 1px solid var(--line);
         }
 
@@ -245,64 +173,58 @@
         }
 
         .case-item .case-title {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
         .case-item .case-desc {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--muted);
-            margin-bottom: 10px;
-            line-height: 1.7;
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
 
         .case-item .case-links a {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
             font-size: 11px;
             color: var(--accent);
             text-decoration: none;
-            margin-right: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+            margin-right: 12px;
         }
 
         .case-item .case-links a:hover {
-            border-bottom: 1px solid var(--accent);
+            text-decoration: underline;
+        }
+
+        .case-item .case-links a::after {
+            content: " →";
         }
 
         .badge {
             display: inline-block;
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
             font-size: 10px;
             color: var(--muted);
-            background: var(--accent-soft);
-            padding: 4px 10px;
-            margin-top: 8px;
-            margin-right: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            background: var(--tag-bg);
+            padding: 2px 8px;
+            margin-top: 6px;
+            margin-right: 4px;
         }
 
         .badge a {
             color: var(--accent);
             text-decoration: none;
-            cursor: pointer;
         }
 
         .badge a:hover {
             text-decoration: underline;
         }
 
+        /* Отзывы */
         .feedback-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 16px;
+            gap: 10px;
+            margin-top: 14px;
         }
 
         @media (max-width: 500px) {
@@ -314,13 +236,15 @@
             border: 1px solid var(--line);
             display: block;
             cursor: pointer;
-            transition: opacity 0.2s;
+            filter: grayscale(30%);
+            transition: filter 0.2s;
         }
 
         .feedback-row img:hover {
-            opacity: 0.85;
+            filter: grayscale(0%);
         }
 
+        /* Курсы */
         .courses-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -334,220 +258,215 @@
         }
 
         .course-card {
-            background: var(--card);
-            padding: 16px;
-            font-size: 13px;
+            background: var(--bg);
+            padding: 14px;
+            font-size: 12px;
         }
 
         .course-card .course-name {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-weight: 600;
-            margin-bottom: 2px;
+            font-weight: 700;
+            margin-bottom: 1px;
         }
 
         .course-card .course-org {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
             font-size: 10px;
             color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .course-card a {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
             font-size: 10px;
             color: var(--accent);
             text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
         }
 
         .course-card a:hover {
-            border-bottom: 1px solid var(--accent);
+            text-decoration: underline;
         }
 
+        /* Контакты */
         .contact-row {
-            font-size: 14px;
+            font-size: 13px;
             line-height: 2;
         }
 
         .contact-row a {
             color: var(--accent);
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
         }
 
         .contact-row a:hover {
-            border-bottom: 1px solid var(--accent);
+            text-decoration: underline;
         }
 
+        /* Подвал */
         footer {
-            margin-top: 56px;
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            font-size: 10px;
+            margin-top: 48px;
+            padding: 28px 0 40px;
+            border-top: 2px solid var(--text);
+            font-size: 11px;
             color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
         }
     </style>
 </head>
 <body>
 
-    <div class="layout">
-
-        <aside class="sidebar">
-            <div class="sidebar-top">
-                <h1>Оксана Туркина</h1>
-                <div class="role">Куратор / Координатор</div>
-                <nav class="sidebar-nav">
-                    <a href="#skillbox">Опыт работы</a>
-                    <a href="#courses">Курсы и тренинги</a>
-                    <a href="#contacts">Контакты</a>
-                </nav>
+    <header>
+        <div class="container">
+            <div class="logo">
+                Оксана Туркина<span class="cursor">_</span>
             </div>
-            <div class="sidebar-bottom">
-                не проходите мимо ;)<br>
-                <a href="#about">✎ резюме</a>
+            <div class="header-right">
+                <a href="https://t.me/DarthOx">@DarthOx</a> &middot; не проходите мимо ;)
             </div>
-        </aside>
+        </div>
+    </header>
 
-        <main class="main">
+    <div class="container">
 
-            <div class="hero">
-                <div class="greeting">Привет!</div>
-                <p class="belief">
-                    Я верю, что обучение может быть бережным, ясным и вдохновляющим.
-                </p>
-                <p class="intro">
-                    Ниже — мой путь в профессию, опыт и то, что важно знать обо мне и моей работе.
-                </p>
+        <!-- Теги -->
+        <div class="tags">
+            <a href="#about">#резюме</a>
+            <a href="#skillbox">#skillbox</a>
+            <a href="#beeline">#билайн</a>
+            <a href="#courses">#курсы</a>
+            <a href="#contacts">#контакты</a>
+        </div>
 
-                <div class="soft-gradient"></div>
-                <div class="soft-gradient-caption">бережность &middot; структура &middot; эмпатия</div>
+        <!-- Hero -->
+        <div class="hero">
+            <div class="greeting">Привет!</div>
+            <p class="belief">
+                Я верю, что обучение может быть бережным, ясным и вдохновляющим.
+            </p>
+            <p class="intro">
+                Ниже — мой путь в профессию, опыт и то, что важно знать обо мне и моей работе.
+            </p>
+        </div>
+
+        <div class="ascii-divider">/* —————————————————— */</div>
+
+        <!-- SKILLBOX -->
+        <div class="section" id="skillbox">
+            <h2>Skillbox</h2>
+
+            <div class="case-item">
+                <div class="case-title">Асинхронный курс «Эмоциональный интеллект»</div>
+                <div class="case-desc">
+                    Спроектирован полный образовательный трек по модели ADDIE для сервиса психологической онлайн-поддержки «Юнг». Курс построен на таксономии Блума и модели SSDL, включает мотивационные механики и систему метрик качества.
+                </div>
+                <div class="case-links">
+                    <a href="files/emotional-intelligence-course.xlsx" target="_blank">Программа (XLSX)</a>
+                    <a href="files/emotional-intelligence-presentation.pdf" target="_blank">Презентация (PDF)</a>
+                    <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат</a>
+                </div>
+                <span class="badge">Методист образовательных программ &middot; Skillbox &middot; 2026</span>
             </div>
+        </div>
 
-            <hr class="section-divider">
+        <!-- БИЛАЙН -->
+        <div class="section" id="beeline">
+            <h2>Билайн</h2>
 
-            <div class="section" id="skillbox">
-                <h2>Skillbox</h2>
+            <div class="case-item">
+                <div class="case-title">Обучение сотрудников продаж и проектного управления</div>
+                <div class="case-desc">
+                    Разработка и проведение обучающих программ по продуктам и бизнес-процессам компании. По собственной инициативе провела обучение для менеджеров проектов. Получены благодарности и живые отзывы за контент и понятную подачу.
+                </div>
+                <span class="badge"><a href="files/gratitude-training.pdf" target="_blank">Благодарность за разработку и проведение обучения</a></span>
 
-                <div class="case-item">
-                    <div class="case-title">Асинхронный курс «Эмоциональный интеллект»</div>
-                    <div class="case-desc">
-                        Спроектирован полный образовательный трек по модели ADDIE для сервиса психологической онлайн-поддержки «Юнг». Курс построен на таксономии Блума и модели SSDL, включает мотивационные механики и систему метрик качества.
-                    </div>
-                    <div class="case-links">
-                        <a href="files/emotional-intelligence-course.xlsx" target="_blank">Программа (XLSX)</a>
-                        <a href="files/emotional-intelligence-presentation.pdf" target="_blank">Презентация (PDF)</a>
-                        <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат</a>
-                    </div>
-                    <span class="badge">Методист образовательных программ &middot; Skillbox &middot; 2026</span>
+                <div class="feedback-row">
+                    <a href="assets/images/feedback-1.jpg" target="_blank"><img src="assets/images/feedback-1.jpg" alt="Отзыв об обучении"></a>
+                    <a href="assets/images/feedback-2.jpg" target="_blank"><img src="assets/images/feedback-2.jpg" alt="Отзыв об обучении"></a>
                 </div>
             </div>
 
-            <div class="section" id="beeline">
-                <h2>Билайн</h2>
-
-                <div class="case-item">
-                    <div class="case-title">Обучение сотрудников продаж и проектного управления</div>
-                    <div class="case-desc">
-                        Разработка и проведение обучающих программ по продуктам и бизнес-процессам компании. По собственной инициативе провела обучение для менеджеров проектов. Получены благодарности и живые отзывы за контент и понятную подачу.
-                    </div>
-                    <span class="badge"><a href="files/gratitude-training.pdf" target="_blank">Благодарность за разработку и проведение обучения</a></span>
-
-                    <div class="feedback-row">
-                        <a href="assets/images/feedback-1.jpg" target="_blank"><img src="assets/images/feedback-1.jpg" alt="Отзыв об обучении"></a>
-                        <a href="assets/images/feedback-2.jpg" target="_blank"><img src="assets/images/feedback-2.jpg" alt="Отзыв об обучении"></a>
-                    </div>
+            <div class="case-item">
+                <div class="case-title">Решение для фармацевтического предприятия</div>
+                <div class="case-desc">
+                    Реализация телеком-решения в период пандемии. Проект отмечен благодарностью департамента информатизации и связи Ярославской области.
                 </div>
-
-                <div class="case-item">
-                    <div class="case-title">Решение для фармацевтического предприятия</div>
-                    <div class="case-desc">
-                        Реализация телеком-решения в период пандемии. Проект отмечен благодарностью департамента информатизации и связи Ярославской области.
-                    </div>
-                    <span class="badge"><a href="files/gratitude-department.pdf" target="_blank">Почётная грамота департамента информатизации и связи ЯО &middot; 2021</a></span>
-                </div>
-
-                <div class="case-item">
-                    <div class="case-title">Комплексное телеком-решение для IT-компании</div>
-                    <div class="case-desc">
-                        Размещение оборудования в ЦОД с резервированием каналов для крупной IT-компании. Проект реализован в срок, в рамках бюджета, принёс высокую выручку.
-                    </div>
-                    <span class="badge"><a href="files/gratitude-tensor.pdf" target="_blank">Благодарность &middot; Проект co-location, Тензор</a></span>
-                </div>
-
-                <div class="case-item">
-                    <div class="case-title">Проект международного аудита</div>
-                    <div class="case-desc">
-                        Участие в проектах для международного аудита в сегменте крупного бизнеса. Отмечена за максимальную вовлечённость в наиболее доходные проекты сегмента LA.
-                    </div>
-                    <span class="badge"><a href="files/gratitude-la-segment.pdf" target="_blank">Благодарность за максимальную вовлечённость в проекты сегмента LA</a></span>
-                </div>
+                <span class="badge"><a href="files/gratitude-department.pdf" target="_blank">Почётная грамота департамента информатизации и связи ЯО &middot; 2021</a></span>
             </div>
 
-            <div class="section" id="courses">
-                <h2>Курсы и тренинги</h2>
-                <div class="courses-grid">
-                    <div class="course-card">
-                        <div class="course-name">Метрики эффективности обучения</div>
-                        <div class="course-org">РАЙЗ &middot; 2026</div>
-                        <a href="files/certificate-raise.pdf" target="_blank">Сертификат →</a>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-name">Методист образовательных программ</div>
-                        <div class="course-org">Skillbox &middot; 2025–2026</div>
-                        <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат →</a>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-name">Эмоциональный интеллект</div>
-                        <div class="course-org">Билайн Университет &middot; 2024</div>
-                        <a href="files/certificate-beeline-eq.pdf" target="_blank">Сертификат →</a>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-name">Scrum и Kanban</div>
-                        <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
-                        <a href="files/certificate-scrum.pdf" target="_blank">Сертификат →</a>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-name">Английский язык B2</div>
-                        <div class="course-org">European Languages Center Unicorn</div>
-                        <a href="files/certificate-english.pdf" target="_blank">Сертификат →</a>
-                    </div>
+            <div class="case-item">
+                <div class="case-title">Комплексное телеком-решение для IT-компании</div>
+                <div class="case-desc">
+                    Размещение оборудования в ЦОД с резервированием каналов для крупной IT-компании. Проект реализован в срок, в рамках бюджета, принёс высокую выручку.
+                </div>
+                <span class="badge"><a href="files/gratitude-tensor.pdf" target="_blank">Благодарность &middot; Проект co-location, Тензор</a></span>
+            </div>
+
+            <div class="case-item">
+                <div class="case-title">Проект международного аудита</div>
+                <div class="case-desc">
+                    Участие в проектах для международного аудита в сегменте крупного бизнеса. Отмечена за максимальную вовлечённость в наиболее доходные проекты сегмента LA.
+                </div>
+                <span class="badge"><a href="files/gratitude-la-segment.pdf" target="_blank">Благодарность за максимальную вовлечённость в проекты сегмента LA</a></span>
+            </div>
+        </div>
+
+        <!-- КУРСЫ И ТРЕНИНГИ -->
+        <div class="section" id="courses">
+            <h2>Курсы и тренинги</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-name">Метрики эффективности обучения</div>
+                    <div class="course-org">РАЙЗ &middot; 2026</div>
+                    <a href="files/certificate-raise.pdf" target="_blank">Сертификат →</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-name">Методист образовательных программ</div>
+                    <div class="course-org">Skillbox &middot; 2025–2026</div>
+                    <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат →</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-name">Эмоциональный интеллект</div>
+                    <div class="course-org">Билайн Университет &middot; 2024</div>
+                    <a href="files/certificate-beeline-eq.pdf" target="_blank">Сертификат →</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-name">Scrum и Kanban</div>
+                    <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
+                    <a href="files/certificate-scrum.pdf" target="_blank">Сертификат →</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-name">Английский язык B2</div>
+                    <div class="course-org">European Languages Center Unicorn</div>
+                    <a href="files/certificate-english.pdf" target="_blank">Сертификат →</a>
                 </div>
             </div>
+        </div>
 
-            <div class="section" id="about">
-                <h2>Резюме</h2>
-                <p style="font-size:14px;color:var(--muted);line-height:1.7;">
-                    Я — педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата. После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE.
-                </p>
-                <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:8px;">
-                    Моя цель — позиция куратора или координатора образовательных программ. Мне важно получить практический опыт сопровождения студентов, чтобы лучше понимать их потребности и помогать им проходить обучение без барьеров. Рассматриваю также оплачиваемые стажировки с возможностью обучения и перехода в штат.
-                </p>
+        <!-- РЕЗЮМЕ -->
+        <div class="section" id="about">
+            <h2>Резюме</h2>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7;">
+                Я — педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата. После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE.
+            </p>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;">
+                Моя цель — позиция куратора или координатора образовательных программ. Мне важно получить практический опыт сопровождения студентов, чтобы лучше понимать их потребности и помогать им проходить обучение без барьеров. Рассматриваю также оплачиваемые стажировки с возможностью обучения и перехода в штат.
+            </p>
+        </div>
+
+        <!-- КОНТАКТЫ -->
+        <div class="section" id="contacts">
+            <h2>Контакты</h2>
+            <div class="contact-row">
+                <a href="tel:+79605444141">+7 960-544-41-41</a><br>
+                <a href="mailto:ovturkina@gmail.com">ovturkina@gmail.com</a><br>
+                <a href="https://t.me/DarthOx">Telegram: @DarthOx</a><br>
+                Ярославль
             </div>
+        </div>
 
-            <div class="section" id="contacts">
-                <h2>Контакты</h2>
-                <div class="contact-row">
-                    <a href="tel:+79605444141">+7 960-544-41-41</a><br>
-                    <a href="mailto:ovturkina@gmail.com">ovturkina@gmail.com</a><br>
-                    <a href="https://t.me/DarthOx">Telegram: @DarthOx</a><br>
-                    Ярославль
-                </div>
-            </div>
-
-            <footer>
-                Оксана Туркина &middot; 2026
-            </footer>
-
-        </main>
     </div>
+
+    <footer>
+        <div class="container">
+            Оксана Туркина &middot; куратор / координатор образовательных программ &middot; 2026
+        </div>
+    </footer>
 
 </body>
 </html>
