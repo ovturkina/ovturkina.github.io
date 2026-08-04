@@ -75,6 +75,10 @@
         .header-right {
             font-size: 12px;
             color: var(--muted);
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .header-right a {
@@ -84,6 +88,14 @@
 
         .header-right a:hover {
             text-decoration: underline;
+        }
+
+        .header-right .resume-link {
+            font-size: 11px;
+        }
+
+        .header-right .resume-link::before {
+            content: "✎ ";
         }
 
         .tags {
@@ -179,13 +191,16 @@
             line-height: 1.6;
         }
 
+        .case-item .case-links {
+            margin-bottom: 6px;
+        }
+
         .case-item .case-links a {
             font-size: 11px;
             color: var(--accent);
             text-decoration: none;
             margin-right: 12px;
             display: inline-block;
-            margin-bottom: 4px;
         }
 
         .case-item .case-links a:hover {
@@ -211,58 +226,58 @@
             padding: 3px 10px;
         }
 
-        .badge a, .arrow-link {
+        .badge a {
             color: var(--accent);
             text-decoration: none;
         }
 
-        .badge a:hover, .arrow-link:hover {
+        .badge a:hover {
             text-decoration: underline;
         }
 
-        .arrow-link {
-            font-size: 10px;
-            display: inline-block;
-        }
-
-        .arrow-link::after {
-            content: " →";
-        }
-
-        /* Курсы */
+        /* Курсы — список */
         .courses-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--line);
             border: 1px solid var(--line);
         }
 
-        .course-card {
-            background: var(--bg);
-            padding: 14px;
+        .course-item {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--line);
             font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .course-card .course-name {
+        .course-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-item .course-name {
             font-weight: 700;
             margin-bottom: 1px;
         }
 
-        .course-card .course-org {
+        .course-item .course-org {
             font-size: 10px;
             color: var(--muted);
-            margin-bottom: 4px;
         }
 
-        .course-card a {
+        .course-item a {
             font-size: 10px;
             color: var(--accent);
             text-decoration: none;
+            white-space: nowrap;
         }
 
-        .course-card a:hover {
+        .course-item a:hover {
             text-decoration: underline;
+        }
+
+        .course-item a::after {
+            content: " →";
         }
 
         /* Контакты */
@@ -291,118 +306,32 @@
         /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ ========== */
 
         @media (max-width: 600px) {
-            body {
-                font-size: 13px;
-            }
-
-            header {
-                padding: 24px 0 20px;
-                margin-bottom: 24px;
-            }
-
-            header .container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .header-right {
-                font-size: 11px;
-            }
-
-            .tags {
-                gap: 4px;
-                margin-bottom: 24px;
-            }
-
-            .tags a {
-                font-size: 10px;
-                padding: 3px 7px;
-            }
-
-            .hero .greeting {
-                font-size: 24px;
-            }
-
-            .hero .belief {
-                font-size: 13px;
-            }
-
-            .hero .intro {
-                font-size: 12px;
-            }
-
-            .ascii-divider {
-                font-size: 9px;
-                margin-bottom: 24px;
-                overflow: hidden;
-            }
-
-            .section {
-                margin-bottom: 32px;
-            }
-
-            .section h2 {
-                font-size: 12px;
-            }
-
-            .case-item .case-title {
-                font-size: 14px;
-            }
-
-            .case-item .case-desc {
-                font-size: 12px;
-            }
-
-            .case-item .case-links a {
-                font-size: 10px;
-                margin-right: 8px;
-            }
-
-            .courses-list {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .badge {
-                font-size: 9px;
-                padding: 2px 8px;
-            }
-
-            .arrow-link {
-                font-size: 9px;
-            }
-
-            .contact-row {
-                font-size: 12px;
-            }
-
-            footer {
-                margin-top: 36px;
-                padding: 20px 0 32px;
-                font-size: 10px;
-            }
+            body { font-size: 13px; }
+            header { padding: 24px 0 20px; margin-bottom: 24px; }
+            header .container { flex-direction: column; align-items: flex-start; }
+            .logo { font-size: 18px; }
+            .header-right { font-size: 11px; }
+            .tags { gap: 4px; margin-bottom: 24px; }
+            .tags a { font-size: 10px; padding: 3px 7px; }
+            .hero .greeting { font-size: 24px; }
+            .hero .belief { font-size: 13px; }
+            .hero .intro { font-size: 12px; }
+            .ascii-divider { font-size: 9px; margin-bottom: 24px; overflow: hidden; }
+            .section { margin-bottom: 32px; }
+            .section h2 { font-size: 12px; }
+            .case-item .case-title { font-size: 14px; }
+            .case-item .case-desc { font-size: 12px; }
+            .case-item .case-links a { font-size: 10px; margin-right: 8px; }
+            .badge { font-size: 9px; padding: 2px 8px; }
+            .course-item { padding: 12px 14px; font-size: 11px; }
+            .contact-row { font-size: 12px; }
+            footer { margin-top: 36px; padding: 20px 0 32px; font-size: 10px; }
         }
 
         @media (max-width: 380px) {
-            .container {
-                padding: 0 14px;
-            }
-
-            .hero .greeting {
-                font-size: 22px;
-            }
-
-            .tags a {
-                font-size: 9px;
-                padding: 2px 6px;
-            }
-
-            .courses-list {
-                grid-template-columns: 1fr;
-            }
+            .container { padding: 0 14px; }
+            .hero .greeting { font-size: 22px; }
+            .tags a { font-size: 9px; padding: 2px 6px; }
         }
     </style>
 </head>
@@ -414,7 +343,9 @@
                 Оксана Туркина<span class="cursor">_</span>
             </div>
             <div class="header-right">
-                <a href="https://t.me/DarthOx">@DarthOx</a> &middot; не проходите мимо ;)
+                <a href="https://t.me/DarthOx">@DarthOx</a>
+                <span>не проходите мимо ;)</span>
+                <a href="files/resume.docx" class="resume-link" target="_blank">резюме</a>
             </div>
         </div>
     </header>
@@ -422,7 +353,6 @@
     <div class="container">
 
         <div class="tags">
-            <a href="#about">#резюме</a>
             <a href="#skillbox">#skillbox</a>
             <a href="#beeline">#билайн</a>
             <a href="#courses">#курсы</a>
@@ -466,10 +396,12 @@
                 <div class="case-desc">
                     Разработка и проведение обучающих программ по продуктам и бизнес-процессам компании. По собственной инициативе провела обучение для менеджеров проектов. Получены благодарности и живые отзывы за контент и понятную подачу.
                 </div>
+                <div class="case-links">
+                    <a href="images/feedback-1.jpg" target="_blank">Отзыв 1</a>
+                    <a href="images/feedback-2.jpg" target="_blank">Отзыв 2</a>
+                </div>
                 <div class="badge-row">
                     <span class="badge"><a href="files/gratitude-training.pdf" target="_blank">Благодарность за обучение</a></span>
-                    <a href="images/feedback-1.jpg" target="_blank" class="arrow-link">Отзыв 1</a>
-                    <a href="images/feedback-2.jpg" target="_blank" class="arrow-link">Отзыв 2</a>
                 </div>
             </div>
 
@@ -507,30 +439,40 @@
         <div class="section" id="courses">
             <h2>Курсы и тренинги</h2>
             <div class="courses-list">
-                <div class="course-card">
-                    <div class="course-name">Метрики эффективности обучения</div>
-                    <div class="course-org">РАЙЗ &middot; 2026</div>
-                    <a href="files/certificate-raise.pdf" target="_blank">Сертификат →</a>
+                <div class="course-item">
+                    <div>
+                        <div class="course-name">Метрики эффективности обучения</div>
+                        <div class="course-org">РАЙЗ &middot; 2026</div>
+                    </div>
+                    <a href="files/certificate-raise.pdf" target="_blank">Сертификат</a>
                 </div>
-                <div class="course-card">
-                    <div class="course-name">Методист образовательных программ</div>
-                    <div class="course-org">Skillbox &middot; 2025–2026</div>
-                    <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат →</a>
+                <div class="course-item">
+                    <div>
+                        <div class="course-name">Методист образовательных программ</div>
+                        <div class="course-org">Skillbox &middot; 2025–2026</div>
+                    </div>
+                    <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат</a>
                 </div>
-                <div class="course-card">
-                    <div class="course-name">Эмоциональный интеллект</div>
-                    <div class="course-org">Билайн Университет &middot; 2024</div>
-                    <a href="files/certificate-beeline-eq.pdf" target="_blank">Сертификат →</a>
+                <div class="course-item">
+                    <div>
+                        <div class="course-name">Эмоциональный интеллект</div>
+                        <div class="course-org">Билайн Университет &middot; 2024</div>
+                    </div>
+                    <a href="files/certificate-beeline-eq.pdf" target="_blank">Сертификат</a>
                 </div>
-                <div class="course-card">
-                    <div class="course-name">Scrum и Kanban</div>
-                    <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
-                    <a href="files/certificate-scrum.pdf" target="_blank">Сертификат →</a>
+                <div class="course-item">
+                    <div>
+                        <div class="course-name">Scrum и Kanban</div>
+                        <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
+                    </div>
+                    <a href="files/certificate-scrum.pdf" target="_blank">Сертификат</a>
                 </div>
-                <div class="course-card">
-                    <div class="course-name">Английский язык B2</div>
-                    <div class="course-org">European Languages Center Unicorn</div>
-                    <a href="files/certificate-english.pdf" target="_blank">Сертификат →</a>
+                <div class="course-item">
+                    <div>
+                        <div class="course-name">Английский язык B2</div>
+                        <div class="course-org">European Languages Center Unicorn</div>
+                    </div>
+                    <a href="files/certificate-english.pdf" target="_blank">Сертификат</a>
                 </div>
             </div>
         </div>
@@ -542,6 +484,9 @@
             </p>
             <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;">
                 Сейчас я развиваюсь в направлении образовательных программ и хочу быть полезной там, где особенно ценят внимание к студентам и качество сопровождения.
+            </p>
+            <p style="margin-top:12px;">
+                <a href="files/resume.docx" target="_blank" style="font-size:11px;color:var(--accent);text-decoration:none;">Скачать резюме (DOCX) →</a>
             </p>
         </div>
 
