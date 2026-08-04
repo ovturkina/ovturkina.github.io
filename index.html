@@ -42,7 +42,6 @@
             padding: 0 24px;
         }
 
-        /* Главный экран */
         .hero {
             padding: 80px 0 60px;
             text-align: center;
@@ -99,14 +98,12 @@
             border-color: var(--silver);
         }
 
-        /* Разделитель */
         .divider {
             border: none;
             border-top: 1px solid var(--line);
             margin: 0 0 60px;
         }
 
-        /* Заголовки секций */
         h2 {
             font-size: 24px;
             font-weight: 600;
@@ -129,7 +126,6 @@
             line-height: 1.6;
         }
 
-        /* Карточка кейса */
         .case-card {
             background: var(--card);
             border: 1px solid var(--line);
@@ -169,6 +165,8 @@
             padding: 6px 12px;
             border-radius: 8px;
             margin-top: 16px;
+            margin-right: 8px;
+            margin-bottom: 8px;
             text-decoration: none;
             transition: all 0.2s;
         }
@@ -182,7 +180,23 @@
             font-size: 14px;
         }
 
-        /* Футер */
+        .feedback-block {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .feedback-block { grid-template-columns: 1fr; }
+        }
+
+        .feedback-block img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+        }
+
         .contacts-section {
             padding: 40px 0;
             text-align: center;
@@ -222,7 +236,6 @@
 </head>
 <body>
 
-    <!-- Главный экран -->
     <section class="hero">
         <div class="container">
             <h1>Оксана Туркина</h1>
@@ -241,10 +254,6 @@
         <h2>Резюме</h2>
         <p>Педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата.</p>
         <p>После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE. Рассматриваю позиции куратора или координатора образовательных программ, а также оплачиваемые стажировки с возможностью обучения и перехода в штат.</p>
-
-        <p style="margin-top: 16px;">
-            <a href="files/resume.pdf" class="btn-secondary" style="display:inline-block; padding:8px 20px; border-radius:100px; font-size:13px; text-decoration:none;">Скачать резюме PDF →</a>
-        </p>
     </section>
 
     <br><br>
@@ -253,7 +262,7 @@
     <section id="cases" class="container">
         <h2>Кейсы</h2>
 
-        <!-- Кейс 1 -->
+        <!-- Кейс 1: Курс -->
         <div class="case-card">
             <div class="case-header">
                 <h3>Асинхронный курс «Эмоциональный интеллект»</h3>
@@ -270,7 +279,32 @@
             </a>
         </div>
 
-        <!-- Кейс 2 -->
+        <!-- Кейс 2: Обучение сотрудников -->
+        <div class="case-card">
+            <div class="case-header">
+                <h3>Обучение сотрудников продаж и проектного управления</h3>
+                <span class="case-tag">Билайн</span>
+            </div>
+            <p>Разработка и проведение обучающих программ по продуктам и бизнес-процессам компании для сотрудников продаж, поддержки и проектного управления Западного региона. По собственной инициативе разработала и провела обучение для менеджеров проектов.</p>
+            <p>Получены благодарности и живые отзывы за контент и понятную подачу материала. Отмечена за максимальную вовлечённость в наиболее доходные проекты для крупного бизнеса.</p>
+
+            <a href="files/gratitude-training.pdf" class="award-badge" target="_blank">
+                <span class="award-icon">🏅</span> Благодарность за разработку и проведение обучения
+            </a>
+            <a href="files/gratitude-la-segment.pdf" class="award-badge" target="_blank">
+                <span class="award-icon">🏅</span> Благодарность за проекты в сегменте LA
+            </a>
+            <a href="files/certificate-beeline-eq.pdf" class="award-badge" target="_blank">
+                <span class="award-icon">📜</span> Билайн Университет — Эмоциональный интеллект
+            </a>
+
+            <div class="feedback-block">
+                <img src="assets/images/feedback-1.jpg" alt="Отзыв об обучении">
+                <img src="assets/images/feedback-2.jpg" alt="Отзыв об обучении">
+            </div>
+        </div>
+
+        <!-- Кейс 3: Тензор -->
         <div class="case-card">
             <div class="case-header">
                 <h3>Комплексное телеком-решение для IT-компании</h3>
@@ -282,7 +316,7 @@
             </a>
         </div>
 
-        <!-- Кейс 3 -->
+        <!-- Кейс 4: Фарма -->
         <div class="case-card">
             <div class="case-header">
                 <h3>Решение для фармацевтического предприятия</h3>
@@ -291,22 +325,6 @@
             <p>Реализация телеком-решения в период пандемии. Проект отмечен благодарностью департамента информатизации и связи Ярославской области.</p>
             <a href="files/gratitude-department.pdf" class="award-badge" target="_blank">
                 <span class="award-icon">🏅</span> Почётная грамота департамента информатизации и связи ЯО
-            </a>
-        </div>
-
-        <!-- Кейс 4 -->
-        <div class="case-card">
-            <div class="case-header">
-                <h3>Обучение сотрудников продаж и проектного управления</h3>
-                <span class="case-tag">Билайн</span>
-            </div>
-            <p>Разработка и проведение обучающих программ для сотрудников продаж и менеджеров проектов. Получены благодарности и живые отзывы за контент и понятную подачу.</p>
-            <a href="files/gratitude-training.pdf" class="award-badge" target="_blank">
-                <span class="award-icon">🏅</span> Благодарность за разработку и проведение обучения
-            </a>
-            &nbsp;
-            <a href="files/gratitude-la-segment.pdf" class="award-badge" target="_blank">
-                <span class="award-icon">🏅</span> Благодарность за проекты в сегменте LA
             </a>
         </div>
     </section>
