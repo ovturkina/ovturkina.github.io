@@ -10,12 +10,13 @@
     <title>Оксана Туркина</title>
     <style>
         :root {
-            --bg: #FFFFFF;
-            --text: #111111;
-            --muted: #777777;
-            --line: #DDDDDD;
-            --accent: #0088CC;
-            --light-bg: #F5F5F5;
+            --text: #1A1A1A;
+            --muted: #6E6E6E;
+            --line: #D5D5D0;
+            --accent: #E8734A;
+            --accent-soft: #F5E1D8;
+            --light: #FEFDFB;
+            --card: rgba(255,255,255,0.85);
         }
 
         *, *::before, *::after {
@@ -29,12 +30,32 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            background: var(--bg);
+            font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            font-size: 15px;
+            font-size: 16px;
+            background-color: #FDFAF5;
+            background-image:
+                /* Имитация волокон льна */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(180,170,150,0.03) 2px,
+                    rgba(180,170,150,0.03) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(180,170,150,0.02) 1px,
+                    rgba(180,170,150,0.02) 2px
+                ),
+                /* Мягкие пятна-помятости */
+                radial-gradient(ellipse at 20% 30%, rgba(200,180,150,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 60%, rgba(180,160,140,0.05) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 85%, rgba(210,190,160,0.04) 0%, transparent 50%);
         }
 
         /* Двухколоночная сетка */
@@ -60,6 +81,8 @@
             position: sticky;
             top: 0;
             height: 100vh;
+            background: rgba(253,250,245,0.7);
+            backdrop-filter: blur(4px);
         }
 
         @media (max-width: 700px) {
@@ -69,31 +92,34 @@
                 border-right: none;
                 border-bottom: 1px solid var(--line);
                 padding: 28px 20px;
+                background: transparent;
             }
         }
 
         .sidebar-top h1 {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
             font-size: 20px;
             font-weight: 600;
             letter-spacing: 0.02em;
-            text-transform: uppercase;
             margin-bottom: 4px;
         }
 
         .sidebar-top .role {
-            font-size: 12px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 11px;
             color: var(--muted);
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             margin-bottom: 32px;
         }
 
         .sidebar-nav a {
             display: block;
-            font-size: 14px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 13px;
             color: var(--text);
             text-decoration: none;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-weight: 500;
             transition: color 0.15s;
         }
@@ -103,30 +129,27 @@
         }
 
         .sidebar-bottom {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--muted);
+            font-style: italic;
             line-height: 1.4;
         }
 
         .sidebar-bottom a {
             color: var(--accent);
             text-decoration: none;
+            font-style: normal;
             font-weight: 600;
             border-bottom: 2px solid var(--accent);
             display: inline-block;
             margin-top: 6px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 12px;
         }
 
         .sidebar-bottom a:hover {
             color: var(--text);
             border-color: var(--text);
-        }
-
-        .handwritten {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-style: italic;
-            font-size: 14px;
-            color: var(--muted);
         }
 
         /* Правая колонка */
@@ -144,49 +167,79 @@
 
         /* Hero */
         .hero {
-            margin-bottom: 48px;
+            margin-bottom: 44px;
         }
 
         .hero .greeting {
-            font-size: 42px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 38px;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .hero .about-text {
-            font-size: 15px;
+        .hero .belief {
+            font-size: 18px;
+            color: var(--text);
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .hero .intro {
+            font-size: 14px;
             color: var(--muted);
             line-height: 1.7;
-            max-width: 520px;
+            margin-bottom: 24px;
+        }
+
+        /* Абстрактное изображение */
+        .brain-art {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            border-radius: 2px;
+            display: block;
+            margin: 0 0 8px;
+            opacity: 0.9;
+            mix-blend-mode: multiply;
+        }
+
+        .brain-art-caption {
+            font-size: 11px;
+            color: var(--muted);
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
         /* Разделитель */
         .section-divider {
             border: none;
-            border-top: 2px solid var(--text);
+            border-top: 1px solid var(--line);
             margin: 0 0 36px;
-            width: 40px;
+            width: 100%;
         }
 
         /* Секции */
         .section {
-            margin-bottom: 48px;
+            margin-bottom: 44px;
         }
 
         .section h2 {
-            font-size: 13px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             color: var(--muted);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         /* Кейс */
         .case-item {
-            margin-bottom: 28px;
-            padding-bottom: 28px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
             border-bottom: 1px solid var(--line);
         }
 
@@ -197,7 +250,8 @@
         }
 
         .case-item .case-title {
-            font-size: 18px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 17px;
             font-weight: 600;
             margin-bottom: 6px;
         }
@@ -206,33 +260,48 @@
             font-size: 14px;
             color: var(--muted);
             margin-bottom: 10px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .case-item .case-links a {
-            font-size: 12px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 11px;
             color: var(--accent);
             text-decoration: none;
-            margin-right: 16px;
+            margin-right: 14px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
         }
 
         .case-item .case-links a:hover {
-            color: var(--text);
+            border-bottom: 1px solid var(--accent);
         }
 
         .badge {
             display: inline-block;
-            font-size: 11px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 10px;
             color: var(--muted);
-            background: var(--light-bg);
-            padding: 3px 10px;
+            background: var(--accent-soft);
+            padding: 4px 10px;
             margin-top: 8px;
             margin-right: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
+            cursor: default;
+        }
+
+        .badge a {
+            color: var(--accent);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .badge a:hover {
+            text-decoration: underline;
         }
 
         /* Отзывы */
@@ -251,6 +320,12 @@
             width: 100%;
             border: 1px solid var(--line);
             display: block;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .feedback-row img:hover {
+            opacity: 0.85;
         }
 
         /* Курсы */
@@ -267,59 +342,67 @@
         }
 
         .course-card {
-            background: var(--bg);
+            background: var(--card);
             padding: 16px;
             font-size: 13px;
         }
 
         .course-card .course-name {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
             font-weight: 600;
             margin-bottom: 2px;
         }
 
         .course-card .course-org {
-            font-size: 11px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 10px;
             color: var(--muted);
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
             margin-bottom: 6px;
         }
 
         .course-card a {
-            font-size: 11px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 10px;
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
         }
 
         .course-card a:hover {
-            color: var(--text);
+            border-bottom: 1px solid var(--accent);
         }
 
         /* Контакты */
         .contact-row {
             font-size: 14px;
-            line-height: 1.8;
+            line-height: 2;
         }
 
         .contact-row a {
             color: var(--accent);
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
         }
 
         .contact-row a:hover {
-            color: var(--text);
+            border-bottom: 1px solid var(--accent);
         }
 
         /* Подвал */
         footer {
-            margin-top: 60px;
-            font-size: 11px;
+            margin-top: 56px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 10px;
             color: var(--muted);
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
         }
     </style>
 </head>
@@ -333,14 +416,13 @@
                 <h1>Оксана Туркина</h1>
                 <div class="role">Куратор / Координатор</div>
                 <nav class="sidebar-nav">
-                    <a href="#skillbox">Skillbox</a>
-                    <a href="#beeline">Билайн</a>
+                    <a href="#skillbox">Опыт работы</a>
                     <a href="#courses">Курсы и тренинги</a>
                     <a href="#contacts">Контакты</a>
                 </nav>
             </div>
             <div class="sidebar-bottom">
-                <span class="handwritten">не проходите мимо ;)</span><br>
+                не проходите мимо ;)<br>
                 <a href="#about">✎ резюме</a>
             </div>
         </aside>
@@ -351,19 +433,64 @@
             <!-- Hero -->
             <div class="hero">
                 <div class="greeting">Привет!</div>
-                <p class="about-text">
-                    Я — педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата. После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE.
+                <p class="belief">
+                    Я верю, что обучение может быть бережным, ясным и вдохновляющим.
                 </p>
+                <p class="intro">
+                    Ниже — мой путь в профессию, опыт и то, что важно знать обо мне и моей работе.
+                </p>
+
+                <!-- Абстрактное изображение мозга в тёплых тонах — SVG -->
+                <svg class="brain-art" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="g1" cx="30%" cy="40%" r="60%">
+                            <stop offset="0%" stop-color="#F5A88B" stop-opacity="0.9"/>
+                            <stop offset="50%" stop-color="#E8734A" stop-opacity="0.5"/>
+                            <stop offset="100%" stop-color="#D4A08A" stop-opacity="0.2"/>
+                        </radialGradient>
+                        <radialGradient id="g2" cx="70%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#C98FB0" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#E8C4A8" stop-opacity="0.1"/>
+                        </radialGradient>
+                        <radialGradient id="g3" cx="50%" cy="60%" r="40%">
+                            <stop offset="0%" stop-color="#B8D4E0" stop-opacity="0.5"/>
+                            <stop offset="100%" stop-color="#F0D8C8" stop-opacity="0.1"/>
+                        </radialGradient>
+                    </defs>
+                    <!-- Левое полушарие -->
+                    <path d="M200 30 C140 30 80 65 65 110 C50 155 75 190 130 200 C170 207 195 190 200 170 Z" fill="url(#g1)" opacity="0.8"/>
+                    <!-- Правое полушарие -->
+                    <path d="M200 30 C260 30 320 65 335 110 C350 155 325 190 270 200 C230 207 205 190 200 170 Z" fill="url(#g2)" opacity="0.7"/>
+                    <!-- Соединение / мозолистое тело -->
+                    <ellipse cx="200" cy="140" rx="30" ry="12" fill="url(#g3)" opacity="0.6"/>
+                    <!-- Извилины — левое -->
+                    <path d="M100 90 C120 85 140 100 130 115 C120 130 100 125 95 110 Z" fill="none" stroke="#D48A6E" stroke-width="1.2" opacity="0.5"/>
+                    <path d="M85 130 C105 120 115 135 105 148" fill="none" stroke="#D48A6E" stroke-width="1" opacity="0.4"/>
+                    <!-- Извилины — правое -->
+                    <path d="M300 90 C280 85 260 100 270 115 C280 130 300 125 305 110 Z" fill="none" stroke="#C08090" stroke-width="1.2" opacity="0.5"/>
+                    <path d="M315 130 C295 120 285 135 295 148" fill="none" stroke="#C08090" stroke-width="1" opacity="0.4"/>
+                    <!-- Нейронные связи -->
+                    <circle cx="160" cy="80" r="3" fill="#E8A070" opacity="0.6"/>
+                    <circle cx="240" cy="70" r="2.5" fill="#C090A0" opacity="0.5"/>
+                    <circle cx="140" cy="150" r="2" fill="#D4A090" opacity="0.5"/>
+                    <circle cx="260" cy="145" r="2.5" fill="#C0A0B0" opacity="0.5"/>
+                    <circle cx="200" cy="55" r="3" fill="#C8B0C0" opacity="0.4"/>
+                    <!-- Лёгкие линии связей -->
+                    <line x1="160" y1="80" x2="200" y2="55" stroke="#D8B8A8" stroke-width="0.6" opacity="0.4"/>
+                    <line x1="240" y1="70" x2="200" y2="55" stroke="#D8B8C0" stroke-width="0.6" opacity="0.4"/>
+                    <line x1="140" y1="150" x2="200" y2="140" stroke="#D4A898" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="260" y1="145" x2="200" y2="140" stroke="#C8A8B0" stroke-width="0.5" opacity="0.3"/>
+                </svg>
+                <div class="brain-art-caption">бережность &middot; структура &middot; эмпатия</div>
             </div>
 
             <hr class="section-divider">
 
-            <!-- SKILLBOX -->
+            <!-- ОПЫТ РАБОТЫ -->
             <div class="section" id="skillbox">
                 <h2>Skillbox</h2>
 
                 <div class="case-item">
-                    <!-- ЗАМЕНИТЬ: описание -->
                     <div class="case-title">Асинхронный курс «Эмоциональный интеллект»</div>
                     <div class="case-desc">
                         Спроектирован полный образовательный трек по модели ADDIE для сервиса психологической онлайн-поддержки «Юнг». Курс построен на таксономии Блума и модели SSDL, включает мотивационные механики и систему метрик качества.
@@ -377,53 +504,48 @@
                 </div>
             </div>
 
-            <!-- БИЛАЙН -->
             <div class="section" id="beeline">
                 <h2>Билайн</h2>
 
                 <!-- Кейс 1: Обучение -->
                 <div class="case-item">
-                    <!-- ЗАМЕНИТЬ: описание -->
                     <div class="case-title">Обучение сотрудников продаж и проектного управления</div>
                     <div class="case-desc">
                         Разработка и проведение обучающих программ по продуктам и бизнес-процессам компании. По собственной инициативе провела обучение для менеджеров проектов. Получены благодарности и живые отзывы за контент и понятную подачу.
                     </div>
-                    <span class="badge">Благодарность за разработку и проведение обучения</span>
+                    <span class="badge"><a href="files/gratitude-training.pdf" target="_blank">Благодарность за разработку и проведение обучения</a></span>
 
                     <div class="feedback-row">
-                        <img src="assets/images/feedback-1.jpg" alt="Отзыв об обучении">
-                        <img src="assets/images/feedback-2.jpg" alt="Отзыв об обучении">
+                        <a href="assets/images/feedback-1.jpg" target="_blank"><img src="assets/images/feedback-1.jpg" alt="Отзыв об обучении"></a>
+                        <a href="assets/images/feedback-2.jpg" target="_blank"><img src="assets/images/feedback-2.jpg" alt="Отзыв об обучении"></a>
                     </div>
                 </div>
 
                 <!-- Кейс 2: Фарма -->
                 <div class="case-item">
-                    <!-- ЗАМЕНИТЬ: описание -->
                     <div class="case-title">Решение для фармацевтического предприятия</div>
                     <div class="case-desc">
                         Реализация телеком-решения в период пандемии. Проект отмечен благодарностью департамента информатизации и связи Ярославской области.
                     </div>
-                    <span class="badge">Почётная грамота департамента информатизации и связи ЯО &middot; 2021</span>
+                    <span class="badge"><a href="files/gratitude-department.pdf" target="_blank">Почётная грамота департамента информатизации и связи ЯО &middot; 2021</a></span>
                 </div>
 
                 <!-- Кейс 3: Тензор -->
                 <div class="case-item">
-                    <!-- ЗАМЕНИТЬ: описание -->
                     <div class="case-title">Комплексное телеком-решение для IT-компании</div>
                     <div class="case-desc">
                         Размещение оборудования в ЦОД с резервированием каналов для крупной IT-компании. Проект реализован в срок, в рамках бюджета, принёс высокую выручку.
                     </div>
-                    <span class="badge">Благодарность &middot; Проект co-location, Тензор</span>
+                    <span class="badge"><a href="files/gratitude-tensor.pdf" target="_blank">Благодарность &middot; Проект co-location, Тензор</a></span>
                 </div>
 
                 <!-- Кейс 4: Международный аудит -->
                 <div class="case-item">
-                    <!-- ЗАМЕНИТЬ: описание -->
                     <div class="case-title">Проект международного аудита</div>
                     <div class="case-desc">
                         Участие в проектах для международного аудита в сегменте крупного бизнеса. Отмечена за максимальную вовлечённость в наиболее доходные проекты сегмента LA.
                     </div>
-                    <span class="badge">Благодарность за максимальную вовлечённость в проекты сегмента LA</span>
+                    <span class="badge"><a href="files/gratitude-la-segment.pdf" target="_blank">Благодарность за максимальную вовлечённость в проекты сегмента LA</a></span>
                 </div>
             </div>
 
