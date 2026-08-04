@@ -90,14 +90,6 @@
             text-decoration: underline;
         }
 
-        .header-right .resume-link {
-            font-size: 11px;
-        }
-
-        .header-right .resume-link::before {
-            content: "↓ ";
-        }
-
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -138,7 +130,24 @@
         .hero .intro {
             font-size: 13px;
             color: var(--muted);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
+        }
+
+        .hero .resume-hero-link {
+            font-size: 11px;
+        }
+
+        .hero .resume-hero-link a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .hero .resume-hero-link a:hover {
+            text-decoration: underline;
+        }
+
+        .hero .resume-hero-link a::after {
+            content: " →";
         }
 
         .ascii-divider {
@@ -339,7 +348,7 @@
                 Оксана Туркина<span class="cursor">_</span>
             </div>
             <div class="header-right">
-                <a href="files/resume.docx" class="resume-link" target="_blank">резюме</a>
+                <a href="https://t.me/DarthOx">@DarthOx</a>
                 <span>не проходите мимо ;)</span>
             </div>
         </div>
@@ -351,6 +360,7 @@
             <a href="#skillbox">#skillbox</a>
             <a href="#beeline">#билайн</a>
             <a href="#courses">#курсы</a>
+            <a href="#motivation">#про_мотивацию</a>
             <a href="#contacts">#контакты</a>
         </div>
 
@@ -361,6 +371,9 @@
             </p>
             <p class="intro">
                 Ниже — мой путь в профессию, опыт и то, что важно знать обо мне и моей работе.
+            </p>
+            <p class="resume-hero-link">
+                <a href="files/resume.docx" target="_blank">резюме</a>
             </p>
         </div>
 
@@ -472,16 +485,13 @@
             </div>
         </div>
 
-        <div class="section" id="about">
-            <h2>Резюме</h2>
+        <div class="section" id="motivation">
+            <h2>Про мотивацию</h2>
             <p style="font-size:13px;color:var(--muted);line-height:1.7;">
                 Я пришла в образование через педагогику, управление и работу с людьми. Мне близка роль, в которой важно не только организовать процесс, но и помочь человеку пройти его спокойно, понятно и с интересом.
             </p>
             <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;">
                 Сейчас я развиваюсь в направлении образовательных программ и хочу быть полезной там, где особенно ценят внимание к студентам и качество сопровождения.
-            </p>
-            <p style="margin-top:12px;">
-                <a href="files/resume.docx" target="_blank" style="font-size:11px;color:var(--accent);text-decoration:none;">Скачать резюме (DOCX) →</a>
             </p>
         </div>
 
