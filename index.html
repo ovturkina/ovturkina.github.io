@@ -11,12 +11,11 @@
     <style>
         :root {
             --bg: #FFFFFF;
-            --text: #1A1A1A;
-            --muted: #8C8C8C;
-            --line: #EBEBEB;
-            --blue: #00C2FF;
-            --pink: #FF5E9C;
-            --purple: #A78BFA;
+            --text: #111111;
+            --muted: #777777;
+            --line: #DDDDDD;
+            --accent: #0088CC;
+            --light-bg: #F5F5F5;
         }
 
         *, *::before, *::after {
@@ -30,149 +29,164 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', 'Inter', 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Шапка */
-        header {
-            padding: 28px 0 0;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .header-left a {
             font-size: 15px;
-            font-weight: 500;
-            color: var(--text);
-            text-decoration: none;
         }
 
-        .header-left a:hover {
-            color: var(--muted);
+        /* Двухколоночная сетка */
+        .layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
         }
 
-        .header-right {
+        @media (max-width: 700px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Левая колонка */
+        .sidebar {
+            padding: 40px 28px;
+            border-right: 1px solid var(--line);
             display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
+            flex-direction: column;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+                padding: 28px 20px;
+            }
+        }
+
+        .sidebar-top h1 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-top .role {
+            font-size: 12px;
             color: var(--muted);
-            font-size: 13px;
-            transition: color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 32px;
         }
 
-        .header-right:hover {
+        .sidebar-nav a {
+            display: block;
+            font-size: 14px;
             color: var(--text);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-weight: 500;
+            transition: color 0.15s;
         }
 
-        .header-right .hand-icon {
-            font-size: 18px;
+        .sidebar-nav a:hover {
+            color: var(--accent);
         }
 
-        /* Навигация */
-        nav {
-            text-align: center;
-            padding: 32px 0 20px;
+        .sidebar-bottom {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.4;
         }
 
-        nav a {
+        .sidebar-bottom a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        .sidebar-bottom a:hover {
+            color: var(--text);
+            border-color: var(--text);
+        }
+
+        .handwritten {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: italic;
             font-size: 14px;
             color: var(--muted);
-            text-decoration: none;
-            margin: 0 14px;
-            font-weight: 500;
-            transition: color 0.2s;
         }
 
-        nav a:hover {
-            color: var(--text);
+        /* Правая колонка */
+        .main {
+            padding: 40px 48px;
+            max-width: 680px;
+        }
+
+        @media (max-width: 700px) {
+            .main {
+                padding: 28px 20px;
+                max-width: 100%;
+            }
         }
 
         /* Hero */
         .hero {
-            text-align: center;
-            padding: 60px 0 40px;
+            margin-bottom: 48px;
         }
 
         .hero .greeting {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 600;
             letter-spacing: -0.02em;
             margin-bottom: 16px;
         }
 
-        .hero .greeting .emoji {
-            color: #FFCC00;
-        }
-
-        .hero .tagline {
-            font-size: 32px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            line-height: 1.3;
-        }
-
-        .hero .tagline .word-blue { color: var(--blue); }
-        .hero .tagline .word-pink { color: var(--pink); }
-        .hero .tagline .word-purple { color: var(--purple); }
-
-        .hero .subnote {
-            text-align: right;
-            font-size: 13px;
+        .hero .about-text {
+            font-size: 15px;
             color: var(--muted);
-            margin-top: 40px;
-            font-style: italic;
+            line-height: 1.7;
+            max-width: 520px;
+        }
+
+        /* Разделитель */
+        .section-divider {
+            border: none;
+            border-top: 2px solid var(--text);
+            margin: 0 0 36px;
+            width: 40px;
         }
 
         /* Секции */
-        section {
-            padding: 60px 0;
-            border-top: 1px solid var(--line);
+        .section {
+            margin-bottom: 48px;
         }
 
-        h2 {
-            font-size: 22px;
+        .section h2 {
+            font-size: 13px;
             font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 28px;
-            color: var(--text);
-        }
-
-        h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--text);
-        }
-
-        p {
-            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             color: var(--muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        /* Карточка кейса */
+        /* Кейс */
         .case-item {
             margin-bottom: 28px;
-            padding-bottom: 24px;
+            padding-bottom: 28px;
             border-bottom: 1px solid var(--line);
         }
 
@@ -192,30 +206,33 @@
             font-size: 14px;
             color: var(--muted);
             margin-bottom: 10px;
+            line-height: 1.6;
         }
 
         .case-item .case-links a {
-            font-size: 13px;
-            color: var(--blue);
+            font-size: 12px;
+            color: var(--accent);
             text-decoration: none;
             margin-right: 16px;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         .case-item .case-links a:hover {
-            text-decoration: underline;
+            color: var(--text);
         }
 
-        /* Бейдж награды */
         .badge {
             display: inline-block;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--muted);
-            background: #F5F5F5;
-            padding: 4px 10px;
-            border-radius: 20px;
+            background: var(--light-bg);
+            padding: 3px 10px;
             margin-top: 8px;
             margin-right: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         /* Отзывы */
@@ -232,15 +249,17 @@
 
         .feedback-row img {
             width: 100%;
-            border-radius: 8px;
             border: 1px solid var(--line);
+            display: block;
         }
 
-        /* Сетка курсов */
+        /* Курсы */
         .courses-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
         }
 
         @media (max-width: 500px) {
@@ -248,10 +267,9 @@
         }
 
         .course-card {
-            border: 1px solid var(--line);
-            border-radius: 10px;
+            background: var(--bg);
             padding: 16px;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .course-card .course-name {
@@ -260,234 +278,215 @@
         }
 
         .course-card .course-org {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
         }
 
         .course-card a {
-            font-size: 12px;
-            color: var(--blue);
+            font-size: 11px;
+            color: var(--accent);
             text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         .course-card a:hover {
-            text-decoration: underline;
+            color: var(--text);
         }
 
         /* Контакты */
         .contact-row {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
             font-size: 14px;
+            line-height: 1.8;
         }
 
         .contact-row a {
-            color: var(--blue);
+            color: var(--accent);
             text-decoration: none;
         }
 
         .contact-row a:hover {
-            text-decoration: underline;
+            color: var(--text);
         }
 
         /* Подвал */
         footer {
-            text-align: center;
-            padding: 40px 0;
-            font-size: 12px;
-            color: var(--silver, #C8C8C8);
-        }
-
-        /* Адаптив */
-        @media (max-width: 600px) {
-            .hero .greeting { font-size: 34px; }
-            .hero .tagline { font-size: 24px; }
-            nav a { margin: 0 8px; font-size: 13px; }
+            margin-top: 60px;
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="header-left">
-                <a href="#about">Оксана Туркина</a>
+    <div class="layout">
+
+        <!-- Левая колонка -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <h1>Оксана Туркина</h1>
+                <div class="role">Куратор / Координатор</div>
+                <nav class="sidebar-nav">
+                    <a href="#skillbox">Skillbox</a>
+                    <a href="#beeline">Билайн</a>
+                    <a href="#courses">Курсы и тренинги</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+            </div>
+            <div class="sidebar-bottom">
+                <span class="handwritten">не проходите мимо ;)</span><br>
+                <a href="#about">✎ резюме</a>
+            </div>
+        </aside>
+
+        <!-- Правая колонка -->
+        <main class="main">
+
+            <!-- Hero -->
+            <div class="hero">
+                <div class="greeting">Привет!</div>
+                <p class="about-text">
+                    Я — педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата. После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE.
+                </p>
             </div>
 
-            <!-- Телеграм справа вверху -->
-            <a href="https://t.me/DarthOx" class="header-right" target="_blank">
-                <span class="hand-icon">👋</span> не проходите мимо ;)
-            </a>
-        </div>
-    </header>
+            <hr class="section-divider">
 
-    <!-- Навигация по центру -->
-    <nav>
-        <a href="#skillbox">Skillbox</a>
-        <a href="#beeline">Билайн</a>
-        <a href="#courses">Курсы и тренинги</a>
-        <a href="#contacts">Контакты</a>
-    </nav>
+            <!-- SKILLBOX -->
+            <div class="section" id="skillbox">
+                <h2>Skillbox</h2>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="greeting">
-                hey! <span class="emoji">👋</span>
-            </div>
-            <div class="tagline">
-                на стыке<br>
-                <span class="word-blue">педагогики</span>
-                <span class="word-pink">управления</span>
-                <span class="word-purple">технологий</span>
-            </div>
-            <!-- ЗАМЕНИТЬ: свой текст -->
-            <div class="subnote">
-                личное портфолио куратора и координатора образовательных программ. ярославль.
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLBOX -->
-    <section id="skillbox">
-        <div class="container">
-            <h2>Skillbox</h2>
-
-            <div class="case-item">
-                <!-- ЗАМЕНИТЬ: описание проекта -->
-                <div class="case-title">Асинхронный курс «Эмоциональный интеллект»</div>
-                <div class="case-desc">
-                    Спроектирован полный образовательный трек по модели ADDIE для сервиса психологической онлайн-поддержки «Юнг». Курс построен на таксономии Блума и модели SSDL, включает мотивационные механики и систему метрик качества.
-                </div>
-                <div class="case-links">
-                    <a href="files/emotional-intelligence-course.xlsx" target="_blank">Программа курса (XLSX) →</a>
-                    <a href="files/emotional-intelligence-presentation.pdf" target="_blank">Презентация (PDF) →</a>
-                    <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат →</a>
-                </div>
-                <span class="badge">🏅 Методист образовательных программ &middot; Skillbox &middot; 2026</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- БИЛАЙН -->
-    <section id="beeline">
-        <div class="container">
-            <h2>Билайн</h2>
-
-            <!-- Кейс 1: Тензор -->
-            <div class="case-item">
-                <!-- ЗАМЕНИТЬ: описание -->
-                <div class="case-title">Комплексное телеком-решение для IT-компании</div>
-                <div class="case-desc">
-                    Размещение оборудования в ЦОД с резервированием каналов для крупной IT-компании. Проект реализован в срок, в рамках бюджета, принёс высокую выручку.
-                </div>
-                <span class="badge">🏅 Благодарность &middot; Проект co-location, Тензор</span>
-            </div>
-
-            <!-- Кейс 2: Фарма -->
-            <div class="case-item">
-                <!-- ЗАМЕНИТЬ: описание -->
-                <div class="case-title">Решение для фармацевтического предприятия</div>
-                <div class="case-desc">
-                    Реализация телеком-решения в период пандемии. Проект отмечен благодарностью департамента информатизации и связи Ярославской области.
-                </div>
-                <span class="badge">🏅 Почётная грамота департамента информатизации и связи ЯО &middot; 2021</span>
-            </div>
-
-            <!-- Кейс 3: Обучение -->
-            <div class="case-item">
-                <!-- ЗАМЕНИТЬ: описание -->
-                <div class="case-title">Обучение сотрудников продаж и проектного управления</div>
-                <div class="case-desc">
-                    Разработка и проведение обучающих программ по продуктам и бизнес-процессам компании. По собственной инициативе провела обучение для менеджеров проектов. Получены благодарности и живые отзывы за контент и понятную подачу.
-                </div>
-                <span class="badge">🏅 Благодарность за разработку и проведение обучения</span>
-
-                <div class="feedback-row">
-                    <img src="assets/images/feedback-1.jpg" alt="Отзыв об обучении">
-                    <img src="assets/images/feedback-2.jpg" alt="Отзыв об обучении">
+                <div class="case-item">
+                    <!-- ЗАМЕНИТЬ: описание -->
+                    <div class="case-title">Асинхронный курс «Эмоциональный интеллект»</div>
+                    <div class="case-desc">
+                        Спроектирован полный образовательный трек по модели ADDIE для сервиса психологической онлайн-поддержки «Юнг». Курс построен на таксономии Блума и модели SSDL, включает мотивационные механики и систему метрик качества.
+                    </div>
+                    <div class="case-links">
+                        <a href="files/emotional-intelligence-course.xlsx" target="_blank">Программа (XLSX)</a>
+                        <a href="files/emotional-intelligence-presentation.pdf" target="_blank">Презентация (PDF)</a>
+                        <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат</a>
+                    </div>
+                    <span class="badge">Методист образовательных программ &middot; Skillbox &middot; 2026</span>
                 </div>
             </div>
 
-            <!-- Кейс 4: Международный аудит -->
-            <div class="case-item">
-                <!-- ЗАМЕНИТЬ: описание -->
-                <div class="case-title">Проект международного аудита</div>
-                <div class="case-desc">
-                    Участие в проектах для международного аудита в сегменте крупного бизнеса. Отмечена за максимальную вовлечённость в наиболее доходные проекты сегмента LA.
+            <!-- БИЛАЙН -->
+            <div class="section" id="beeline">
+                <h2>Билайн</h2>
+
+                <!-- Кейс 1: Обучение -->
+                <div class="case-item">
+                    <!-- ЗАМЕНИТЬ: описание -->
+                    <div class="case-title">Обучение сотрудников продаж и проектного управления</div>
+                    <div class="case-desc">
+                        Разработка и проведение обучающих программ по продуктам и бизнес-процессам компании. По собственной инициативе провела обучение для менеджеров проектов. Получены благодарности и живые отзывы за контент и понятную подачу.
+                    </div>
+                    <span class="badge">Благодарность за разработку и проведение обучения</span>
+
+                    <div class="feedback-row">
+                        <img src="assets/images/feedback-1.jpg" alt="Отзыв об обучении">
+                        <img src="assets/images/feedback-2.jpg" alt="Отзыв об обучении">
+                    </div>
                 </div>
-                <span class="badge">🏅 Благодарность за максимальную вовлечённость в проекты сегмента LA</span>
+
+                <!-- Кейс 2: Фарма -->
+                <div class="case-item">
+                    <!-- ЗАМЕНИТЬ: описание -->
+                    <div class="case-title">Решение для фармацевтического предприятия</div>
+                    <div class="case-desc">
+                        Реализация телеком-решения в период пандемии. Проект отмечен благодарностью департамента информатизации и связи Ярославской области.
+                    </div>
+                    <span class="badge">Почётная грамота департамента информатизации и связи ЯО &middot; 2021</span>
+                </div>
+
+                <!-- Кейс 3: Тензор -->
+                <div class="case-item">
+                    <!-- ЗАМЕНИТЬ: описание -->
+                    <div class="case-title">Комплексное телеком-решение для IT-компании</div>
+                    <div class="case-desc">
+                        Размещение оборудования в ЦОД с резервированием каналов для крупной IT-компании. Проект реализован в срок, в рамках бюджета, принёс высокую выручку.
+                    </div>
+                    <span class="badge">Благодарность &middot; Проект co-location, Тензор</span>
+                </div>
+
+                <!-- Кейс 4: Международный аудит -->
+                <div class="case-item">
+                    <!-- ЗАМЕНИТЬ: описание -->
+                    <div class="case-title">Проект международного аудита</div>
+                    <div class="case-desc">
+                        Участие в проектах для международного аудита в сегменте крупного бизнеса. Отмечена за максимальную вовлечённость в наиболее доходные проекты сегмента LA.
+                    </div>
+                    <span class="badge">Благодарность за максимальную вовлечённость в проекты сегмента LA</span>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- КУРСЫ И ТРЕНИНГИ -->
-    <section id="courses">
-        <div class="container">
-            <h2>Курсы и тренинги</h2>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <div class="course-name">Метрики эффективности обучения</div>
-                    <div class="course-org">РАЙЗ &middot; 2026</div>
-                    <a href="files/certificate-raise.pdf" target="_blank">Сертификат →</a>
-                </div>
-                <div class="course-card">
-                    <div class="course-name">Методист образовательных программ</div>
-                    <div class="course-org">Skillbox &middot; 2025–2026</div>
-                    <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат →</a>
-                </div>
-                <div class="course-card">
-                    <div class="course-name">Эмоциональный интеллект</div>
-                    <div class="course-org">Билайн Университет &middot; 2024</div>
-                    <a href="files/certificate-beeline-eq.pdf" target="_blank">Сертификат →</a>
-                </div>
-                <div class="course-card">
-                    <div class="course-name">Scrum и Kanban</div>
-                    <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
-                    <a href="files/certificate-scrum.pdf" target="_blank">Сертификат →</a>
-                </div>
-                <div class="course-card">
-                    <div class="course-name">Английский язык B2</div>
-                    <div class="course-org">European Languages Center Unicorn</div>
-                    <a href="files/certificate-english.pdf" target="_blank">Сертификат →</a>
+            <!-- КУРСЫ И ТРЕНИНГИ -->
+            <div class="section" id="courses">
+                <h2>Курсы и тренинги</h2>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-name">Метрики эффективности обучения</div>
+                        <div class="course-org">РАЙЗ &middot; 2026</div>
+                        <a href="files/certificate-raise.pdf" target="_blank">Сертификат →</a>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-name">Методист образовательных программ</div>
+                        <div class="course-org">Skillbox &middot; 2025–2026</div>
+                        <a href="files/certificate-skillbox.pdf" target="_blank">Сертификат →</a>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-name">Эмоциональный интеллект</div>
+                        <div class="course-org">Билайн Университет &middot; 2024</div>
+                        <a href="files/certificate-beeline-eq.pdf" target="_blank">Сертификат →</a>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-name">Scrum и Kanban</div>
+                        <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
+                        <a href="files/certificate-scrum.pdf" target="_blank">Сертификат →</a>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-name">Английский язык B2</div>
+                        <div class="course-org">European Languages Center Unicorn</div>
+                        <a href="files/certificate-english.pdf" target="_blank">Сертификат →</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ОБО МНЕ -->
-    <section id="about">
-        <div class="container">
-            <h2>Обо мне</h2>
-            <!-- ЗАМЕНИТЬ: свой текст -->
-            <p>
-                Педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата.
-            </p>
-            <p>
-                После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE. Рассматриваю позиции куратора или координатора образовательных программ, а также оплачиваемые стажировки с возможностью обучения и перехода в штат.
-            </p>
-        </div>
-    </section>
-
-    <!-- КОНТАКТЫ -->
-    <section id="contacts">
-        <div class="container">
-            <h2>Контакты</h2>
-            <div class="contact-row">
-                <span><a href="tel:+79605444141">+7 960-544-41-41</a></span>
-                <span><a href="mailto:ovturkina@gmail.com">ovturkina@gmail.com</a></span>
-                <span><a href="https://t.me/DarthOx">Telegram: @DarthOx</a></span>
-                <span>Ярославль</span>
+            <!-- ОБО МНЕ / РЕЗЮМЕ -->
+            <div class="section" id="about">
+                <h2>Резюме</h2>
+                <p style="font-size:14px;color:var(--muted);line-height:1.7;">
+                    Я — педагог по базовому образованию и менеджер проектов с опытом более 10 лет. Обучала сотрудников продаж, клиентского сервиса и проектного управления, работала с возражениями и сложными коммуникациями, вела проекты от идеи до результата. После курса Skillbox спроектировала собственный образовательный курс по модели ADDIE.
+                </p>
+                <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:8px;">
+                    Моя цель — позиция куратора или координатора образовательных программ. Мне важно получить практический опыт сопровождения студентов, чтобы лучше понимать их потребности и помогать им проходить обучение без барьеров. Рассматриваю также оплачиваемые стажировки с возможностью обучения и перехода в штат.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            Оксана Туркина &middot; 2026
-        </div>
-    </footer>
+            <!-- КОНТАКТЫ -->
+            <div class="section" id="contacts">
+                <h2>Контакты</h2>
+                <div class="contact-row">
+                    <a href="tel:+79605444141">+7 960-544-41-41</a><br>
+                    <a href="mailto:ovturkina@gmail.com">ovturkina@gmail.com</a><br>
+                    <a href="https://t.me/DarthOx">Telegram: @DarthOx</a><br>
+                    Ярославль
+                </div>
+            </div>
+
+            <footer>
+                Оксана Туркина &middot; 2026
+            </footer>
+
+        </main>
+    </div>
 
 </body>
 </html>
