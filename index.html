@@ -135,23 +135,16 @@
             margin-bottom: 40px;
         }
 
-        .hero .greeting {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
         .hero .name {
             font-size: 28px;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
 
-        .hero .role {
-            font-size: 16px;
-            color: var(--accent);
+        .hero .greeting {
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .hero .belief {
@@ -387,9 +380,8 @@
             .header-right { font-size: 11px; }
             .tags { gap: 4px; margin-bottom: 24px; }
             .tags a { font-size: 10px; padding: 3px 7px; }
-            .hero .greeting { font-size: 24px; }
             .hero .name { font-size: 24px; }
-            .hero .role { font-size: 14px; }
+            .hero .greeting { font-size: 20px; }
             .hero .belief { font-size: 13px; }
             .hero .intro { font-size: 12px; }
             .ascii-divider { font-size: 9px; margin-bottom: 24px; overflow: hidden; }
@@ -408,8 +400,8 @@
 
         @media (max-width: 380px) {
             .container { padding: 0 14px; }
-            .hero .greeting { font-size: 22px; }
             .hero .name { font-size: 22px; }
+            .hero .greeting { font-size: 18px; }
             .tags a { font-size: 9px; padding: 2px 6px; }
         }
     </style>
@@ -440,9 +432,8 @@
         </div>
 
         <div class="hero">
-            <h1 class="name">Оксана Туркина</h1>
-            <p class="role">Куратор / координатор образовательных программ</p>
-            <p class="greeting" style="font-size:22px; margin-bottom:8px;">Привет!</p>
+            <h1 class="name">Оксана Туркина <span style="color: var(--accent); font-weight: 300; font-size: 18px;">/</span> <span style="font-weight: 400; font-size: 18px; color: var(--muted);">куратор образовательных программ</span></h1>
+            <p class="greeting">Привет!</p>
             <p class="belief">
                 Я верю, что обучение может быть бережным, ясным и вдохновляющим.
             </p>
