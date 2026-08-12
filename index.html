@@ -392,7 +392,7 @@
             color: var(--muted);
         }
 
-        /* ===== НОВЫЙ СТИЛЬ ДЛЯ БЕЙДЖА SCRUM ===== */
+        /* ===== СТИЛИ ДЛЯ БЕЙДЖА SCRUM ===== */
         .badge.certificate-draft {
             background: var(--tag-bg);
             color: var(--muted);
@@ -410,6 +410,17 @@
             background: var(--line);
             color: var(--text);
             border-color: var(--accent);
+        }
+
+        /* Голубой символ ⌘ */
+        .badge.certificate-draft .cmd-icon {
+            color: var(--accent);
+            transition: color 0.2s ease;
+        }
+
+        /* При наведении символ становится чёрным */
+        .badge.certificate-draft:hover .cmd-icon {
+            color: var(--text) !important;
         }
 
         /* Стилизованный тултип */
@@ -451,7 +462,7 @@
             border-top-color: var(--text);
             z-index: 10;
         }
-        /* ===== КОНЕЦ НОВОГО СТИЛЯ ===== */
+        /* ===== КОНЕЦ СТИЛЕЙ ДЛЯ SCRUM ===== */
 
         @media (max-width: 600px) {
             body { font-size: 13px; }
@@ -653,13 +664,13 @@
                 </div>
                 <!-- ИЗМЕНЁННЫЙ БЛОК SCRUM -->
                 <div class="course-item">
-    <div>
-        <div class="course-name">Scrum и Kanban</div>
-        <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
-    </div>
-    <span class="badge certificate-draft" title="Сертификат не выдаётся, курс пройден в рамках большой программы обучения">⌘ в составе курса</span>
-</div>
-                    <span class="badge certificate-draft" title="Сертификат не выдаётся, курс пройден в рамках большой программы обучения">📚 в составе курса</span>
+                    <div>
+                        <div class="course-name">Scrum и Kanban</div>
+                        <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
+                    </div>
+                    <span class="badge certificate-draft" title="Сертификат не выдаётся, курс пройден в рамках большой программы обучения">
+                        <span class="cmd-icon">⌘</span> в составе курса
+                    </span>
                 </div>
                 <!-- КОНЕЦ ИЗМЕНЁННОГО БЛОКА -->
                 <div class="course-item">
