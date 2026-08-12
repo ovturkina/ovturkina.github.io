@@ -392,6 +392,67 @@
             color: var(--muted);
         }
 
+        /* ===== НОВЫЙ СТИЛЬ ДЛЯ БЕЙДЖА SCRUM ===== */
+        .badge.certificate-draft {
+            background: var(--tag-bg);
+            color: var(--muted);
+            font-size: 10px;
+            padding: 3px 10px;
+            font-family: inherit;
+            border: 1px dashed var(--line);
+            cursor: help;
+            user-select: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .badge.certificate-draft:hover {
+            background: var(--line);
+            color: var(--text);
+            border-color: var(--accent);
+        }
+
+        /* Стилизованный тултип */
+        .badge.certificate-draft[title] {
+            position: relative;
+        }
+
+        .badge.certificate-draft[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text);
+            color: var(--bg);
+            font-size: 10px;
+            font-weight: 400;
+            padding: 6px 12px;
+            border-radius: 0;
+            white-space: nowrap;
+            max-width: 300px;
+            white-space: normal;
+            word-wrap: break-word;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+            text-align: center;
+            letter-spacing: 0.01em;
+        }
+
+        .badge.certificate-draft[title]:hover::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 2px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--text);
+            z-index: 10;
+        }
+        /* ===== КОНЕЦ НОВОГО СТИЛЯ ===== */
+
         @media (max-width: 600px) {
             body { font-size: 13px; }
             header { padding: 24px 0 20px; margin-bottom: 24px; }
@@ -590,13 +651,15 @@
                     </div>
                     <a href="files/certificate-raise.pdf" target="_blank" rel="noopener">Сертификат</a>
                 </div>
+                <!-- ИЗМЕНЁННЫЙ БЛОК SCRUM -->
                 <div class="course-item">
                     <div>
                         <div class="course-name">Scrum и Kanban</div>
                         <div class="course-org">Иван Селиховкин (PMP) &middot; 2025</div>
                     </div>
-                    <a href="files/certificate-scrum.pdf" target="_blank" rel="noopener">Сертификат</a>
+                    <span class="badge certificate-draft" title="Сертификат не выдаётся, курс пройден в рамках большой программы обучения">📚 в составе курса</span>
                 </div>
+                <!-- КОНЕЦ ИЗМЕНЁННОГО БЛОКА -->
                 <div class="course-item">
                     <div>
                         <div class="course-name">Эмоциональный интеллект</div>
